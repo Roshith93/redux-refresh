@@ -9,16 +9,28 @@ const initialState = {
 
 // * Reducer
 const reducer = (state = initialState, action) =>{
-  return {
-    state
-  }
+  switch(action.type){
+    case "DEC":
+      return {...state, count: state.count - 1}
+    case "INC":
+      return {...state, count: state.count + 1}
+    case "RESET":
+      return {...state, count: 0}
+      default:
+        return state
+      }
 }
-const store = createStore(reducer)
+// * actions
 
+const store = createStore(reducer)
+store.dispatch({type: "RESET"})
+store.dispatch({type: "DEC"})
+store.dispatch({type: "DEC"})
+store.dispatch({type: "INC"})
 function App() {
   return (
     <div className="App">
-      <Counter reduxState={store.getState()}/>
+      <Counter reduxState={store.getState()} />
     </div>
   );
 }
