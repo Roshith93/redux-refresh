@@ -1,22 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
 
 const Counter = (props) => {
- const {reduxState, inc, dec, reset} = props
- console.log(props)
- console.log(reduxState)
- // const [counterVal, setCounterVal] = useState(0)
- // const increment = () => {
- //  setCounterVal(prevVal => prevVal + 1)
- // }
- // const decrement = () => {
- //  setCounterVal(prevVal => prevVal - 1)
- // }
- // const reset = () => {
- //  setCounterVal(0)
- // }
 
  return (<div className="container">
-  <p className="counter">{reduxState.count}</p>
+  <h3>{props.name}</h3>
+  <p className="counter">{props.count}</p>
   {/* <div className="buttons">
   <button type="button" onClick={()=>inc} className="btn">increment</button>
   <button onClick={reset} className="btn">reset</button>
@@ -24,4 +13,10 @@ const Counter = (props) => {
   </div> */}
  </div>)
 }
-export default Counter
+const mapStateToProps = state => {
+ return{
+  count: state.counter.count,
+  name: state.counter.name
+ }
+}
+export default connect(mapStateToProps)(Counter)
