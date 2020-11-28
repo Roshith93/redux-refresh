@@ -1,3 +1,5 @@
 export const INC = "INC"
 export const RESET = "RESET"
 export const DEC = "DEC"
+export const CLOSE_MODAL = "CLOSE_MODAL"
+export const OPEN_MODAL = "OPEN_MODAL"
