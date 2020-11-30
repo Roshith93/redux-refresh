@@ -1,6 +1,8 @@
 import * as type from '../actions/types'
 const intialState = {
-  isOpen: true,
+  isOpen: false,
+  title: null,
+  text: null,
 }
 
 const modalReducer = (state = intialState, action) => {
@@ -9,11 +11,15 @@ const modalReducer = (state = intialState, action) => {
       return {
         ...state,
         isOpen: true,
+        title: action.payload.title,
+        text: action.payload.text,
       }
     case type.CLOSE_MODAL:
       return {
         ...state,
         isOpen: false,
+        title: null,
+        text: null,
       }
     default:
       return state

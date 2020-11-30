@@ -1,15 +1,15 @@
 import * as type from './types'
 
-export const closeModal = (val) => {
+export const closeModal = (payload) => {
   return {
     type: type.CLOSE_MODAL,
-    val,
+    payload,
   }
 }
 
-export const openModal = (val) => {
+export const openModal = (payload) => {
   return {
     type: type.OPEN_MODAL,
-    val,
+    payload,
   }
 }
