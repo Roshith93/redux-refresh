@@ -12,7 +12,13 @@ const Counter = (props) => {
         <button type='button' onClick={props.increment} className='btn'>
           increment
         </button>
-        <button onClick={() => props.reset(true)} className='btn'>
+        <button
+          onClick={() => {
+            props.reset()
+            props.openModal(true)
+          }}
+          className='btn'
+        >
           reset
         </button>
         <button onClick={props.decrement} className='btn'>
@@ -28,14 +34,20 @@ const mapStateToProps = ({ counter: { count, name } }) => {
     name,
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement()),
-    reset: (val) => {
-      dispatch(openModal(val))
-      dispatch(reset())
-    },
-  }
+const mapDispatchToProps = {
+  increment,
+  decrement,
+  reset,
+  openModal,
 }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     increment: () => dispatch(increment()),
+//     decrement: () => dispatch(decrement()),
+//     reset: (val) => {
+//       dispatch(openModal(val))
+//       dispatch(reset())
+//     },
+//   }
+// }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)
